@@ -10,3 +10,10 @@ type Survey @model {
   author: String!
   image: String
 }
+
+type SurveyResponse @model {
+  id: ID!
+  author: String!
+  parentsurvey: String!
+  questions: String
+}
