@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "xsurveyapp34e69466": {}
+      },
+      "api": {
+        "xsurveyapp": {}
+      },
+      "storage": {
+        "imagestorage": {}
       }
     }
   }
