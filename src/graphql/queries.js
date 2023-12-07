@@ -39,3 +39,37 @@ export const listSurveys = /* GraphQL */ `
     }
   }
 `;
+export const getSurveyResponse = /* GraphQL */ `
+  query GetSurveyResponse($id: ID!) {
+    getSurveyResponse(id: $id) {
+      id
+      author
+      parentsurvey
+      questions
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listSurveyResponses = /* GraphQL */ `
+  query ListSurveyResponses(
+    $filter: ModelSurveyResponseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSurveyResponses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        author
+        parentsurvey
+        questions
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;

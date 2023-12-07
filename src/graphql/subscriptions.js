@@ -46,3 +46,48 @@ export const onDeleteSurvey = /* GraphQL */ `
     }
   }
 `;
+export const onCreateSurveyResponse = /* GraphQL */ `
+  subscription OnCreateSurveyResponse(
+    $filter: ModelSubscriptionSurveyResponseFilterInput
+  ) {
+    onCreateSurveyResponse(filter: $filter) {
+      id
+      author
+      parentsurvey
+      questions
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateSurveyResponse = /* GraphQL */ `
+  subscription OnUpdateSurveyResponse(
+    $filter: ModelSubscriptionSurveyResponseFilterInput
+  ) {
+    onUpdateSurveyResponse(filter: $filter) {
+      id
+      author
+      parentsurvey
+      questions
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteSurveyResponse = /* GraphQL */ `
+  subscription OnDeleteSurveyResponse(
+    $filter: ModelSubscriptionSurveyResponseFilterInput
+  ) {
+    onDeleteSurveyResponse(filter: $filter) {
+      id
+      author
+      parentsurvey
+      questions
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
