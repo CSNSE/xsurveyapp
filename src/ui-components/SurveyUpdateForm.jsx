@@ -27,14 +27,12 @@ export default function SurveyUpdateForm(props) {
   const initialValues = {
     name: "",
     description: "",
-    author: "",
     image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [author, setAuthor] = React.useState(initialValues.author);
   const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -43,7 +41,6 @@ export default function SurveyUpdateForm(props) {
       : initialValues;
     setName(cleanValues.name);
     setDescription(cleanValues.description);
-    setAuthor(cleanValues.author);
     setImage(cleanValues.image);
     setErrors({});
   };
@@ -66,7 +63,6 @@ export default function SurveyUpdateForm(props) {
   const validations = {
     name: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    author: [{ type: "Required" }],
     image: [],
   };
   const runValidationTasks = async (
@@ -97,7 +93,6 @@ export default function SurveyUpdateForm(props) {
         let modelFields = {
           name,
           description,
-          author,
           image: image ?? null,
         };
         const validationResponses = await Promise.all(
@@ -161,7 +156,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name: value,
               description,
-              author,
               image,
             };
             const result = onChange(modelFields);
@@ -188,7 +182,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description: value,
-              author,
               image,
             };
             const result = onChange(modelFields);
@@ -205,33 +198,6 @@ export default function SurveyUpdateForm(props) {
         {...getOverrideProps(overrides, "description")}
       ></TextField>
       <TextField
-        label="Author"
-        isRequired={true}
-        isReadOnly={false}
-        value={author}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              author: value,
-              image,
-            };
-            const result = onChange(modelFields);
-            value = result?.author ?? value;
-          }
-          if (errors.author?.hasError) {
-            runValidationTasks("author", value);
-          }
-          setAuthor(value);
-        }}
-        onBlur={() => runValidationTasks("author", author)}
-        errorMessage={errors.author?.errorMessage}
-        hasError={errors.author?.hasError}
-        {...getOverrideProps(overrides, "author")}
-      ></TextField>
-      <TextField
         label="Image"
         isRequired={false}
         isReadOnly={false}
@@ -242,7 +208,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description,
-              author,
               image: value,
             };
             const result = onChange(modelFields);

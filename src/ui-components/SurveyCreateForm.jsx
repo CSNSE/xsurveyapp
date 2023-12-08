@@ -25,27 +25,23 @@ export default function SurveyCreateForm(props) {
   const initialValues = {
     name: "",
     description: "",
-    author: "",
     image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [author, setAuthor] = React.useState(initialValues.author);
   const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setDescription(initialValues.description);
-    setAuthor(initialValues.author);
     setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    author: [{ type: "Required" }],
     image: [],
   };
   const runValidationTasks = async (
@@ -76,7 +72,6 @@ export default function SurveyCreateForm(props) {
         let modelFields = {
           name,
           description,
-          author,
           image,
         };
         const validationResponses = await Promise.all(
@@ -142,7 +137,6 @@ export default function SurveyCreateForm(props) {
             const modelFields = {
               name: value,
               description,
-              author,
               image,
             };
             const result = onChange(modelFields);
@@ -169,7 +163,6 @@ export default function SurveyCreateForm(props) {
             const modelFields = {
               name,
               description: value,
-              author,
               image,
             };
             const result = onChange(modelFields);
@@ -186,33 +179,6 @@ export default function SurveyCreateForm(props) {
         {...getOverrideProps(overrides, "description")}
       ></TextField>
       <TextField
-        label="Author"
-        isRequired={true}
-        isReadOnly={false}
-        value={author}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              author: value,
-              image,
-            };
-            const result = onChange(modelFields);
-            value = result?.author ?? value;
-          }
-          if (errors.author?.hasError) {
-            runValidationTasks("author", value);
-          }
-          setAuthor(value);
-        }}
-        onBlur={() => runValidationTasks("author", author)}
-        errorMessage={errors.author?.errorMessage}
-        hasError={errors.author?.hasError}
-        {...getOverrideProps(overrides, "author")}
-      ></TextField>
-      <TextField
         label="Image"
         isRequired={false}
         isReadOnly={false}
@@ -223,7 +189,6 @@ export default function SurveyCreateForm(props) {
             const modelFields = {
               name,
               description,
-              author,
               image: value,
             };
             const result = onChange(modelFields);
