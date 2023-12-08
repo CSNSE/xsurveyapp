@@ -24,7 +24,7 @@ export default function SurveyCardCollection(props) {
   const [loading, setLoading] = React.useState(true);
   const [maxViewed, setMaxViewed] = React.useState(1);
   const pageSize = 8;
-  const isPaginated = true;
+  const isPaginated = false;
   React.useEffect(() => {
     nextToken[instanceKey] = "";
     apiCache[instanceKey] = [];
@@ -81,7 +81,7 @@ export default function SurveyCardCollection(props) {
     <div>
       <Collection
         type="list"
-        isSearchable={true}
+        isSearchable="true"
         searchPlaceholder="Search..."
         direction="column"
         alignItems="center"
