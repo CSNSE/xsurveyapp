@@ -7,7 +7,6 @@ export const getSurvey = /* GraphQL */ `
       id
       name
       description
-      author
       image
       createdAt
       updatedAt
@@ -26,7 +25,6 @@ export const listSurveys = /* GraphQL */ `
         id
         name
         description
-        author
         image
         createdAt
         updatedAt
