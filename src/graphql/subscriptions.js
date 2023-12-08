@@ -7,7 +7,6 @@ export const onCreateSurvey = /* GraphQL */ `
       id
       name
       description
-      questions
       author
       image
       createdAt
@@ -22,7 +21,6 @@ export const onUpdateSurvey = /* GraphQL */ `
       id
       name
       description
-      questions
       author
       image
       createdAt
@@ -37,7 +35,6 @@ export const onDeleteSurvey = /* GraphQL */ `
       id
       name
       description
-      questions
       author
       image
       createdAt

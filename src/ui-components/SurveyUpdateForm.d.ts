@@ -24,14 +24,12 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type SurveyUpdateFormInputValues = {
     name?: string;
     description?: string;
-    questions?: string;
     author?: string;
     image?: string;
 };
 export declare type SurveyUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
-    questions?: ValidationFunction<string>;
     author?: ValidationFunction<string>;
     image?: ValidationFunction<string>;
 };
@@ -40,7 +38,6 @@ export declare type SurveyUpdateFormOverridesProps = {
     SurveyUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
     description?: PrimitiveOverrideProps<TextFieldProps>;
-    questions?: PrimitiveOverrideProps<TextFieldProps>;
     author?: PrimitiveOverrideProps<TextFieldProps>;
     image?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;

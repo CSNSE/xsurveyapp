@@ -27,7 +27,6 @@ export default function SurveyUpdateForm(props) {
   const initialValues = {
     name: "",
     description: "",
-    questions: "",
     author: "",
     image: "",
   };
@@ -35,7 +34,6 @@ export default function SurveyUpdateForm(props) {
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [questions, setQuestions] = React.useState(initialValues.questions);
   const [author, setAuthor] = React.useState(initialValues.author);
   const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
@@ -45,7 +43,6 @@ export default function SurveyUpdateForm(props) {
       : initialValues;
     setName(cleanValues.name);
     setDescription(cleanValues.description);
-    setQuestions(cleanValues.questions);
     setAuthor(cleanValues.author);
     setImage(cleanValues.image);
     setErrors({});
@@ -69,7 +66,6 @@ export default function SurveyUpdateForm(props) {
   const validations = {
     name: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    questions: [{ type: "Required" }],
     author: [{ type: "Required" }],
     image: [],
   };
@@ -101,7 +97,6 @@ export default function SurveyUpdateForm(props) {
         let modelFields = {
           name,
           description,
-          questions,
           author,
           image: image ?? null,
         };
@@ -166,7 +161,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name: value,
               description,
-              questions,
               author,
               image,
             };
@@ -194,7 +188,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description: value,
-              questions,
               author,
               image,
             };
@@ -212,34 +205,6 @@ export default function SurveyUpdateForm(props) {
         {...getOverrideProps(overrides, "description")}
       ></TextField>
       <TextField
-        label="Questions"
-        isRequired={true}
-        isReadOnly={false}
-        value={questions}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              questions: value,
-              author,
-              image,
-            };
-            const result = onChange(modelFields);
-            value = result?.questions ?? value;
-          }
-          if (errors.questions?.hasError) {
-            runValidationTasks("questions", value);
-          }
-          setQuestions(value);
-        }}
-        onBlur={() => runValidationTasks("questions", questions)}
-        errorMessage={errors.questions?.errorMessage}
-        hasError={errors.questions?.hasError}
-        {...getOverrideProps(overrides, "questions")}
-      ></TextField>
-      <TextField
         label="Author"
         isRequired={true}
         isReadOnly={false}
@@ -250,7 +215,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description,
-              questions,
               author: value,
               image,
             };
@@ -278,7 +242,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description,
-              questions,
               author,
               image: value,
             };

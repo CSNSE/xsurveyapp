@@ -6,10 +6,14 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { Flex, Icon, Text } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { overrides, ...rest } = props;
+  const logoThreeNineFourSevenFourZeroOneFiveOnClick = useNavigateAction({
+    type: "url",
+    url: "/create",
+  });
   return (
     <Flex
       gap="20px"
@@ -75,7 +79,10 @@ export default function NavBar(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Logo"
+          children="Create Survey"
+          onClick={() => {
+            logoThreeNineFourSevenFourZeroOneFiveOnClick();
+          }}
           {...getOverrideProps(overrides, "Logo39474015")}
         ></Text>
       </Flex>
