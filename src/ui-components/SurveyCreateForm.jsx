@@ -24,6 +24,7 @@ export default function SurveyCreateForm(props) {
     onSuccess,
     onError,
     onSubmit,
+    onCancel,
     onValidate,
     onChange,
     overrides,
@@ -224,8 +225,8 @@ export default function SurveyCreateForm(props) {
             });
           }}
           processFile={processFile}
-          accessLevel={"private"}
-          acceptedFileTypes={[]}
+          accessLevel={"public"}
+          acceptedFileTypes={["image/*"]}
           isResumable={false}
           showThumbnails={true}
           maxFileCount={1}
@@ -249,6 +250,14 @@ export default function SurveyCreateForm(props) {
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
+          <Button
+            children="Cancel"
+            type="button"
+            onClick={() => {
+              onCancel && onCancel();
+            }}
+            {...getOverrideProps(overrides, "CancelButton")}
+          ></Button>
           <Button
             children="Submit"
             type="submit"

@@ -21,6 +21,8 @@ export declare type SurveyCardOverridesProps = {
     SurveyCard?: PrimitiveOverrideProps<FlexProps>;
     image?: PrimitiveOverrideProps<ImageProps>;
     "Card Area"?: PrimitiveOverrideProps<FlexProps>;
+    edit?: PrimitiveOverrideProps<ImageProps>;
+    delete?: PrimitiveOverrideProps<ImageProps>;
     "Main Text"?: PrimitiveOverrideProps<FlexProps>;
     Title?: PrimitiveOverrideProps<TextProps>;
     Description?: PrimitiveOverrideProps<TextProps>;

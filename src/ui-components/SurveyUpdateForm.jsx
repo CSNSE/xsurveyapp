@@ -19,6 +19,7 @@ export default function SurveyUpdateForm(props) {
     onSuccess,
     onError,
     onSubmit,
+    onCancel,
     onValidate,
     onChange,
     overrides,
@@ -27,13 +28,11 @@ export default function SurveyUpdateForm(props) {
   const initialValues = {
     name: "",
     description: "",
-    image: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
-  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = surveyRecord
@@ -41,7 +40,6 @@ export default function SurveyUpdateForm(props) {
       : initialValues;
     setName(cleanValues.name);
     setDescription(cleanValues.description);
-    setImage(cleanValues.image);
     setErrors({});
   };
   const [surveyRecord, setSurveyRecord] = React.useState(surveyModelProp);
@@ -63,7 +61,6 @@ export default function SurveyUpdateForm(props) {
   const validations = {
     name: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -93,7 +90,6 @@ export default function SurveyUpdateForm(props) {
         let modelFields = {
           name,
           description,
-          image: image ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -156,7 +152,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name: value,
               description,
-              image,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -182,7 +177,6 @@ export default function SurveyUpdateForm(props) {
             const modelFields = {
               name,
               description: value,
-              image,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -196,32 +190,6 @@ export default function SurveyUpdateForm(props) {
         errorMessage={errors.description?.errorMessage}
         hasError={errors.description?.hasError}
         {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Image"
-        isRequired={false}
-        isReadOnly={false}
-        value={image}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              image: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.image ?? value;
-          }
-          if (errors.image?.hasError) {
-            runValidationTasks("image", value);
-          }
-          setImage(value);
-        }}
-        onBlur={() => runValidationTasks("image", image)}
-        errorMessage={errors.image?.errorMessage}
-        hasError={errors.image?.hasError}
-        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"
@@ -241,6 +209,14 @@ export default function SurveyUpdateForm(props) {
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
+          <Button
+            children="Cancel"
+            type="button"
+            onClick={() => {
+              onCancel && onCancel();
+            }}
+            {...getOverrideProps(overrides, "CancelButton")}
+          ></Button>
           <Button
             children="Submit"
             type="submit"

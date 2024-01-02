@@ -23,7 +23,7 @@ export default function SurveyCardCollection(props) {
   const [instanceKey, setInstanceKey] = React.useState("newGuid");
   const [loading, setLoading] = React.useState(true);
   const [maxViewed, setMaxViewed] = React.useState(1);
-  const pageSize = 8;
+  const pageSize = 6;
   const isPaginated = false;
   React.useEffect(() => {
     nextToken[instanceKey] = "";
@@ -81,10 +81,7 @@ export default function SurveyCardCollection(props) {
     <div>
       <Collection
         type="list"
-        isSearchable="true"
-        searchPlaceholder="Search..."
         direction="column"
-        alignItems="center"
         justifyContent="left"
         itemsPerPage={pageSize}
         isPaginated={!isApiPagination && isPaginated}
@@ -99,9 +96,6 @@ export default function SurveyCardCollection(props) {
           return (
             <SurveyCard
               survey={item}
-              height="auto"
-              width="auto"
-              margin="8px 8px 8px 8px"
               key={item.id}
               {...(overrideItems && overrideItems({ item, index }))}
             ></SurveyCard>

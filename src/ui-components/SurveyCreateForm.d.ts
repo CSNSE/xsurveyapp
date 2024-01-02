@@ -46,6 +46,7 @@ export declare type SurveyCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: SurveyCreateFormInputValues) => SurveyCreateFormInputValues;
     onSuccess?: (fields: SurveyCreateFormInputValues) => void;
     onError?: (fields: SurveyCreateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: SurveyCreateFormInputValues) => SurveyCreateFormInputValues;
     onValidate?: SurveyCreateFormValidationValues;
 } & React.CSSProperties>;

@@ -24,19 +24,16 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type SurveyUpdateFormInputValues = {
     name?: string;
     description?: string;
-    image?: string;
 };
 export declare type SurveyUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
-    image?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type SurveyUpdateFormOverridesProps = {
     SurveyUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
     description?: PrimitiveOverrideProps<TextFieldProps>;
-    image?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type SurveyUpdateFormProps = React.PropsWithChildren<{
     overrides?: SurveyUpdateFormOverridesProps | undefined | null;
@@ -46,6 +43,7 @@ export declare type SurveyUpdateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: SurveyUpdateFormInputValues) => SurveyUpdateFormInputValues;
     onSuccess?: (fields: SurveyUpdateFormInputValues) => void;
     onError?: (fields: SurveyUpdateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: SurveyUpdateFormInputValues) => SurveyUpdateFormInputValues;
     onValidate?: SurveyUpdateFormValidationValues;
 } & React.CSSProperties>;
