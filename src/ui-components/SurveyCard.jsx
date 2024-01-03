@@ -27,6 +27,7 @@ export default function SurveyCard(props) {
       },
     });
   };
+  const deleteButtonOnMouseUp = useNavigateAction({ type: "url", url: "/" });
   const editButtonOnClick = useNavigateAction({
     type: "url",
     url: `${"/edit/"}${survey?.id}`,
@@ -182,6 +183,9 @@ export default function SurveyCard(props) {
         children="Delete"
         onClick={() => {
           deleteButtonOnClick();
+        }}
+        onMouseUp={() => {
+          deleteButtonOnMouseUp();
         }}
         {...getOverrideProps(overrides, "Delete Button")}
       ></Button>
