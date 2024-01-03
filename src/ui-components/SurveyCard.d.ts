@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, FlexProps, ImageProps, TextProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -18,18 +18,18 @@ export declare type Variant = {
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type SurveyCardOverridesProps = {
-    SurveyCard?: PrimitiveOverrideProps<FlexProps>;
+    SurveyCard?: PrimitiveOverrideProps<ViewProps>;
     image?: PrimitiveOverrideProps<ImageProps>;
     "Card Area"?: PrimitiveOverrideProps<FlexProps>;
-    edit?: PrimitiveOverrideProps<ImageProps>;
-    delete?: PrimitiveOverrideProps<ImageProps>;
     "Main Text"?: PrimitiveOverrideProps<FlexProps>;
     Title?: PrimitiveOverrideProps<TextProps>;
     Description?: PrimitiveOverrideProps<TextProps>;
     Author?: PrimitiveOverrideProps<TextProps>;
-    Button?: PrimitiveOverrideProps<ButtonProps>;
+    "Take Button"?: PrimitiveOverrideProps<ButtonProps>;
+    "Delete Button"?: PrimitiveOverrideProps<ButtonProps>;
+    "Edit Button"?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
-export declare type SurveyCardProps = React.PropsWithChildren<Partial<FlexProps> & {
+export declare type SurveyCardProps = React.PropsWithChildren<Partial<ViewProps> & {
     survey?: any;
 } & {
     overrides?: SurveyCardOverridesProps | undefined | null;
