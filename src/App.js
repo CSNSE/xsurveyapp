@@ -10,6 +10,7 @@ class App extends Component {
     <div className="App"><header className="App-header">
       <Routes>
         <Route exact path = '/' element={<div><NavBar/><SurveyCardCollection/></div>} />
+        <Route exact path = '/testing' element={<div><NavBar/><SurveyCardCollection/></div>} />
         <Route exact path = '/create' element={<div><NavBar/><SurveyCreateForm/></div>} />
         <Route exact path = '/edit/:surveyId' element={<div><NavBar/><SurveyUpdateForm/></div>} />
       </Routes>
