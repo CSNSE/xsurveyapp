@@ -9,10 +9,9 @@ class App extends Component {
   return (
     <div className="App"><header className="App-header">
       <Routes>
-        <Route exact path = '/' element={<div><NavBar/><SurveyCardCollection/></div>} />
-        <Route exact path = '/testing' element={<div><NavBar/><SurveyCardCollection/></div>} />
-        <Route exact path = '/create' element={<div><NavBar/><SurveyCreateForm/></div>} />
-        <Route exact path = '/edit/:surveyId' element={<div><NavBar/><SurveyUpdateForm/></div>} />
+        <Route path = '/' element={<div class="center"><NavBar/><SurveyCardCollection/></div>}/>
+        <Route path = '/create' element={<div><NavBar/><SurveyCreateForm/></div>} />
+        <Route path = '/edit/:surveyId' element={<div><NavBar/><SurveyUpdateForm/></div>} />
       </Routes>
       </header></div>
     );

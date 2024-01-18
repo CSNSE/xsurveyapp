@@ -19,11 +19,12 @@ export default function NavBar(props) {
     <Flex
       gap="20px"
       direction="row"
-      width="320px"
+      width="335px"
       height="unset"
       justifyContent="center"
       alignItems="center"
       position="relative"
+      left="0%"
       padding="24px 32px 24px 32px"
       backgroundColor="rgba(255,255,255,1)"
       {...getOverrideProps(overrides, "NavBar")}

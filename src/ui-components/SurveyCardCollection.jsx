@@ -81,8 +81,12 @@ export default function SurveyCardCollection(props) {
     <div>
       <Collection
         type="list"
-        direction="column"
-        justifyContent="left"
+        isSearchable={true}
+        searchPlaceholder="Search..."
+        templateColumns="1fr 1fr"
+        autoFlow="row"
+        alignItems="center"
+        justifyContent="center"
         itemsPerPage={pageSize}
         isPaginated={!isApiPagination && isPaginated}
         items={itemsProp || (loading ? new Array(pageSize).fill({}) : items)}
@@ -96,6 +100,7 @@ export default function SurveyCardCollection(props) {
           return (
             <SurveyCard
               survey={item}
+              margin="3px 4px 2px 4px"
               key={item.id}
               {...(overrideItems && overrideItems({ item, index }))}
             ></SurveyCard>

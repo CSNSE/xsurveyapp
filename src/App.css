@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.center {
+  background: rgb(200, 200, 200);
+  color: #000000;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
