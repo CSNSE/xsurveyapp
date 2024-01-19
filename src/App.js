@@ -10,8 +10,8 @@ class App extends Component {
     <div className="App"><header className="App-header">
       <Routes>
         <Route path = '/' element={<div class="center"><NavBar/><SurveyCardCollection/></div>}/>
-        <Route path = '/create' element={<div><NavBar/><SurveyCreateForm/></div>} />
-        <Route path = '/edit/:surveyId' element={<div><NavBar/><SurveyUpdateForm/></div>} />
+        <Route path = '/create' element={<div class="center"><NavBar/><SurveyCreateForm/></div>} />
+        <Route path = '/edit/:surveyId' element={<div class="center"><NavBar/><SurveyUpdateForm/></div>} />
       </Routes>
       </header></div>
     );
