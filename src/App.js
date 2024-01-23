@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { NavBar, SurveyCardCollection, SurveyCreateForm, SurveyUpdateForm } from "./ui-components";
+import { EditForm, NavBar, SurveyCardCollection, SurveyCreateForm } from "./ui-components";
 import { Routes, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
       <Routes>
         <Route path = '/' element={<div class="center"><NavBar/><SurveyCardCollection/></div>}/>
         <Route path = '/create' element={<div class="center"><NavBar/><SurveyCreateForm/></div>} />
-        <Route path = '/edit/:surveyId' element={<div class="center"><NavBar/><SurveyUpdateForm/></div>} />
+        <Route path = '/edit/:surveyId' element={<div class="center"><EditForm/></div>} />
       </Routes>
       </header></div>
     );

@@ -27,6 +27,8 @@ export declare type EditFormOverridesProps = {
     DescriptionChange?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EditFormProps = React.PropsWithChildren<Partial<ViewProps> & {
+    survey?: any;
+} & {
     overrides?: EditFormOverridesProps | undefined | null;
 }>;
 export default function EditForm(props: EditFormProps): React.ReactElement;

@@ -6,10 +6,29 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { useState } from "react";
+import { generateClient } from "aws-amplify/api";
+import { updateSurvey } from "../graphql/mutations";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { Button, Text, TextField, View } from "@aws-amplify/ui-react";
+const client = generateClient();
 export default function EditForm(props) {
-  const { overrides, ...rest } = props;
+  const { survey, overrides, ...rest } = props;
+  const [titleChangeValue, setTitleChangeValue] = useState("");
+  const [descriptionChangeValue, setDescriptionChangeValue] = useState("");
+  const submitButtonOnClick = async () => {
+    await client.graphql({
+      query: updateSurvey.replaceAll("__typename", ""),
+      variables: {
+        input: {
+          name: titleChangeValue,
+          description: descriptionChangeValue,
+          id: survey?.id,
+        },
+      },
+    });
+  };
+  const cancelButtonOnClick = useNavigateAction({ type: "url", url: "/" });
   return (
     <View
       width="320px"
@@ -73,6 +92,9 @@ export default function EditForm(props) {
         isDisabled={false}
         variation="primary"
         children="Submit"
+        onClick={() => {
+          submitButtonOnClick();
+        }}
         {...getOverrideProps(overrides, "Submit Button")}
       ></Button>
       <Button
@@ -87,6 +109,9 @@ export default function EditForm(props) {
         isDisabled={false}
         variation="primary"
         children="Cancel"
+        onClick={() => {
+          cancelButtonOnClick();
+        }}
         {...getOverrideProps(overrides, "Cancel Button")}
       ></Button>
       <TextField
@@ -101,6 +126,10 @@ export default function EditForm(props) {
         isDisabled={false}
         labelHidden={false}
         variation="default"
+        value={titleChangeValue}
+        onChange={(event) => {
+          setTitleChangeValue(event.target.value);
+        }}
         {...getOverrideProps(overrides, "TitleChange")}
       ></TextField>
       <TextField
@@ -115,6 +144,10 @@ export default function EditForm(props) {
         isDisabled={false}
         labelHidden={false}
         variation="default"
+        value={descriptionChangeValue}
+        onChange={(event) => {
+          setDescriptionChangeValue(event.target.value);
+        }}
         {...getOverrideProps(overrides, "DescriptionChange")}
       ></TextField>
     </View>
