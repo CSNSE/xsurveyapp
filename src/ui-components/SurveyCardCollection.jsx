@@ -81,12 +81,11 @@ export default function SurveyCardCollection(props) {
     <div>
       <Collection
         type="list"
-        isSearchable={true}
+        isSearchable="true"
         searchPlaceholder="Search..."
-        templateColumns="1fr 1fr"
-        autoFlow="row"
-        alignItems="center"
-        justifyContent="center"
+        direction="column"
+        alignItems="stretch"
+        justifyContent="left"
         itemsPerPage={pageSize}
         isPaginated={!isApiPagination && isPaginated}
         items={itemsProp || (loading ? new Array(pageSize).fill({}) : items)}

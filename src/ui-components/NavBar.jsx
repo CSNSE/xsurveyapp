@@ -24,7 +24,7 @@ export default function NavBar(props) {
       justifyContent="center"
       alignItems="center"
       position="relative"
-      left="0%"
+left="0%"
       padding="24px 32px 24px 32px"
       backgroundColor="rgba(255,255,255,1)"
       {...getOverrideProps(overrides, "NavBar")}

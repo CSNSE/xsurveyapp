@@ -4,6 +4,7 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
+export { default as EditForm } from "./EditForm";
 export { default as NavBar } from "./NavBar";
 export { default as SurveyCard } from "./SurveyCard";
 export { default as SurveyCardCollection } from "./SurveyCardCollection";
