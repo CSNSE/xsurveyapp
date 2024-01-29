@@ -8,7 +8,6 @@
 import * as React from "react";
 import { useAuth } from "@aws-amplify/ui-react/internal";
 import { useEffect, useState } from "react";
-import { API } from "aws-amplify";
 import { Field } from "@aws-amplify/ui-react/internal";
 import { StorageManager } from "@aws-amplify/ui-react-storage";
 import { updateSurvey } from "../graphql/mutations";
