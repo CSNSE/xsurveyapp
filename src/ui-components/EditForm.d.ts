@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtonProps, DividerProps, FlexProps, IconProps, ImageProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -18,16 +18,24 @@ export declare type Variant = {
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EditFormOverridesProps = {
-    EditForm?: PrimitiveOverrideProps<ViewProps>;
-    "Rectangle 1"?: PrimitiveOverrideProps<ViewProps>;
+    EditForm?: PrimitiveOverrideProps<FlexProps>;
+    Content?: PrimitiveOverrideProps<FlexProps>;
+    "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
+    Icon?: PrimitiveOverrideProps<ViewProps>;
+    Vector?: PrimitiveOverrideProps<IconProps>;
     Edit?: PrimitiveOverrideProps<TextProps>;
-    "Submit Button"?: PrimitiveOverrideProps<ButtonProps>;
-    "Cancel Button"?: PrimitiveOverrideProps<ButtonProps>;
-    TitleChange?: PrimitiveOverrideProps<TextFieldProps>;
-    DescriptionChange?: PrimitiveOverrideProps<TextFieldProps>;
+    "db id"?: PrimitiveOverrideProps<TextProps>;
+    Profile?: PrimitiveOverrideProps<FlexProps>;
+    image?: PrimitiveOverrideProps<ImageProps>;
+    Forms?: PrimitiveOverrideProps<FlexProps>;
+    TextField40472461?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40472462?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40472463?: PrimitiveOverrideProps<TextFieldProps>;
+    Divider?: PrimitiveOverrideProps<DividerProps>;
+    Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
-export declare type EditFormProps = React.PropsWithChildren<Partial<ViewProps> & {
-    survey?: any;
+export declare type EditFormProps = React.PropsWithChildren<Partial<FlexProps> & {
+    nx?: any;
 } & {
     overrides?: EditFormOverridesProps | undefined | null;
 }>;
