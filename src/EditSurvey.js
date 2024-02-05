@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { Nav, SurveyUpdateForm } from "./ui-components";
+import { NavBar, SurveyUpdateForm } from "./ui-components";
 import { API, Storage } from "aws-amplify";
 import "./App.css";
 import { getSurvey } from "./graphql/queries";
@@ -36,7 +36,7 @@ useEffect(() => {
   return (
     <div>
       <header className="App-header">
-        <Nav />
+        <NavBar />
         <SurveyUpdateForm nx={cr} />
       </header>
     </div>

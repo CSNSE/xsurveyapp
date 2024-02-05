@@ -5,6 +5,7 @@ export const getSurvey = /* GraphQL */ `
   query GetSurvey($id: ID!) {
     getSurvey(id: $id) {
       id
+      author
       name
       description
       image
@@ -23,6 +24,7 @@ export const listSurveys = /* GraphQL */ `
     listSurveys(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        author
         name
         description
         image
