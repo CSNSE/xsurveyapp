@@ -8,6 +8,7 @@ export const createSurvey = /* GraphQL */ `
   ) {
     createSurvey(input: $input, condition: $condition) {
       id
+      author
       name
       description
       image
@@ -24,6 +25,7 @@ export const updateSurvey = /* GraphQL */ `
   ) {
     updateSurvey(input: $input, condition: $condition) {
       id
+      author
       name
       description
       image
@@ -40,6 +42,7 @@ export const deleteSurvey = /* GraphQL */ `
   ) {
     deleteSurvey(input: $input, condition: $condition) {
       id
+      author
       name
       description
       image

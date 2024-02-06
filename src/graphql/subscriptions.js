@@ -5,6 +5,7 @@ export const onCreateSurvey = /* GraphQL */ `
   subscription OnCreateSurvey($filter: ModelSubscriptionSurveyFilterInput) {
     onCreateSurvey(filter: $filter) {
       id
+      author
       name
       description
       image
@@ -18,6 +19,7 @@ export const onUpdateSurvey = /* GraphQL */ `
   subscription OnUpdateSurvey($filter: ModelSubscriptionSurveyFilterInput) {
     onUpdateSurvey(filter: $filter) {
       id
+      author
       name
       description
       image
@@ -31,6 +33,7 @@ export const onDeleteSurvey = /* GraphQL */ `
   subscription OnDeleteSurvey($filter: ModelSubscriptionSurveyFilterInput) {
     onDeleteSurvey(filter: $filter) {
       id
+      author
       name
       description
       image

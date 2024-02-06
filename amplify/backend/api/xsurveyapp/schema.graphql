@@ -1,5 +1,6 @@
 type Survey @model @auth(rules: [{allow: public}]) {
   id: ID!
+  author: String
   name: String!
   description: String!
   image: String
@@ -10,4 +11,4 @@ type SurveyResponse @model @auth(rules: [{allow: public}]) {
   author: String!
   parentsurvey: String!
   questions: String
-} 
+}
