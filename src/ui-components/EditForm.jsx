@@ -13,21 +13,27 @@ import { getOverrideProps, useNavigateAction } from "./utils";
 import { Button, Text, TextField, View } from "@aws-amplify/ui-react";
 const client = generateClient();
 export default function EditForm(props) {
+  //survey is somehow null
   const { survey, overrides, ...rest } = props;
-  const [titleChangeValue, setTitleChangeValue] = useState("");
+  const [nameChangeValue, setNameChangeValue] = useState("");
   const [descriptionChangeValue, setDescriptionChangeValue] = useState("");
   const submitButtonOnClick = async () => {
+    try{
+    console.log(survey)
     await client.graphql({
       query: updateSurvey.replaceAll("__typename", ""),
       variables: {
         input: {
-          name: titleChangeValue,
+          name: nameChangeValue,
           description: descriptionChangeValue,
           id: survey?.id,
-          author: survey?.author
+          author: survey?.author,
         },
       },
-    });
+    });}
+    catch(error){
+      console.error(error);
+    }
   };
   const cancelButtonOnClick = useNavigateAction({ type: "url", url: "/" });
   return (
@@ -118,8 +124,8 @@ export default function EditForm(props) {
       <TextField
         width="300px"
         height="unset"
-        label="Title"
-        placeholder="New Title"
+        label="Name"
+        placeholder="New Name"
         position="absolute"
         top="63px"
         left="10px"
@@ -127,11 +133,11 @@ export default function EditForm(props) {
         isDisabled={false}
         labelHidden={false}
         variation="default"
-        value={titleChangeValue}
+        value={nameChangeValue}
         onChange={(event) => {
-          setTitleChangeValue(event.target.value);
+          setNameChangeValue(event.target.value);
         }}
-        {...getOverrideProps(overrides, "TitleChange")}
+        {...getOverrideProps(overrides, "NameChange")}
       ></TextField>
       <TextField
         width="300px"

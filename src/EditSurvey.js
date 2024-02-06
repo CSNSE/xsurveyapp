@@ -37,7 +37,7 @@ useEffect(() => {
     <div>
       <header className="App-header">
         <NavBar />
-        <SurveyUpdateForm nx={cr} />
+        <EditForm nx={cr} />
       </header>
     </div>
   );
