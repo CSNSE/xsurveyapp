@@ -15,6 +15,7 @@ const client = generateClient();
 export default function EditForm(props) {
   //survey is somehow null
   const { survey, overrides, ...rest } = props;
+  console.log(survey)
   const [nameChangeValue, setNameChangeValue] = useState("");
   const [descriptionChangeValue, setDescriptionChangeValue] = useState("");
   const submitButtonOnClick = async () => {
