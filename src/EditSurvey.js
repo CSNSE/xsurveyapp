@@ -10,23 +10,23 @@ function EditSurvey() {
 }
 
 function Put() {
-  const { cid } = useParams();
+  const { surveyId } = useParams();
   const [cr, setMe] = useState({});
+
 useEffect(() => {
     const queryData = async () => {
-      const record = cid
+      const record = surveyId
         ? (
             await client.graphql({
               query: getSurvey.replaceAll("__typename", ""),
-              variables: { id: cid },
-            })
+              variables: { id: surveyId },
+            }).catch(error => console.error(error))
           )?.data?.getSurvey
         : cr;
-        console.log("cr: "+cr)
         setMe(record);
     };
     queryData();
-  }, [cid, cr]);
+  }, [surveyId, cr]);
 
 
 

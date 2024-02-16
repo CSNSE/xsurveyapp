@@ -15,12 +15,10 @@ const client = generateClient();
 export default function EditForm(props) {
   //survey is somehow null
   const { survey, overrides, ...rest } = props;
-  console.log(survey)
   const [nameChangeValue, setNameChangeValue] = useState("");
   const [descriptionChangeValue, setDescriptionChangeValue] = useState("");
   const submitButtonOnClick = async () => {
     try{
-    console.log(survey)
     await client.graphql({
       query: updateSurvey.replaceAll("__typename", ""),
       variables: {
@@ -126,7 +124,7 @@ export default function EditForm(props) {
         width="300px"
         height="unset"
         label="Name"
-        placeholder="New Name"
+        placeholder={survey?.name}
         position="absolute"
         top="63px"
         left="10px"
@@ -144,7 +142,7 @@ export default function EditForm(props) {
         width="300px"
         height="unset"
         label="Description"
-        placeholder="New Description"
+        placeholder= {survey?.description}
         position="absolute"
         top="151px"
         left="10px"
