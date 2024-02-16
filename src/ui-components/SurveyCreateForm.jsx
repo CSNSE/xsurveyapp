@@ -33,11 +33,15 @@ export default function SurveyCreateForm(props) {
   const initialValues = {
     name: "",
     description: "",
-    image: undefined,
+    author: "author",
+    image: " ",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
     initialValues.description
+  );
+  const [author, setAuthor] = React.useState(
+    initialValues.author
   );
   const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
@@ -45,12 +49,12 @@ export default function SurveyCreateForm(props) {
     setName(initialValues.name);
     setDescription(initialValues.description);
     setImage(initialValues.image);
+    setAuthor(initialValues.author);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
     description: [{ type: "Required" }],
-    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -80,6 +84,7 @@ export default function SurveyCreateForm(props) {
         let modelFields = {
           name,
           description,
+          author,
           image,
         };
         const validationResponses = await Promise.all(
@@ -263,6 +268,10 @@ export default function SurveyCreateForm(props) {
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            onClick={() => {
+              console.log(author)
+              onSubmit && onSubmit();
+            }}
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

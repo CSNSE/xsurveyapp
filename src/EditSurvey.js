@@ -1,35 +1,32 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { NavBar, SurveyUpdateForm } from "./ui-components";
-import { API, Storage } from "aws-amplify";
+import { NavBar, EditForm } from "./ui-components";
+import { generateClient } from "aws-amplify/api";
 import "./App.css";
 import { getSurvey } from "./graphql/queries";
+const client = generateClient();
 function EditSurvey() {
   return <Put />;
 }
 
 function Put() {
-  const { cid } = useParams();
+  const { surveyId } = useParams();
   const [cr, setMe] = useState({});
+
 useEffect(() => {
     const queryData = async () => {
-      const record = cid
+      const record = surveyId
         ? (
-            await API.graphql({
+            await client.graphql({
               query: getSurvey.replaceAll("__typename", ""),
-              variables: { id: cid },
-            })
+              variables: { id: surveyId },
+            }).catch(error => console.error(error))
           )?.data?.getSurvey
         : cr;
-        if (record.image) {
-          record.filename = record.image
-          const url = await Storage.get(record.image);
-          record.image = url;
-          }
         setMe(record);
     };
     queryData();
-  }, [cid, cr]);
+  }, [surveyId, cr]);
 
 
 
@@ -37,7 +34,7 @@ useEffect(() => {
     <div>
       <header className="App-header">
         <NavBar />
-        <SurveyUpdateForm nx={cr} />
+        <EditForm survey={cr} />
       </header>
     </div>
   );
